@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>luck弹层组件-PC版 | 前端老徐</title>
+<title>luck弹层组件-PC版</title>
 <link rel="stylesheet" href="http://www.loveqiao.com/css/public.css">
 <link rel="stylesheet" href="http://cdn.loveqiao.com/buttons.css">
 </head>
@@ -18,7 +18,7 @@
 <script src="http://cdn.loveqiao.com/jquery.js"></script> 
 <script src="luck/luck.min.js"></script> 
 <script>
-function luck1(n){
+function luck1(){
 	luck.open({
 		title:'luck-pc',
 		content:'<p align="center" style="line-height:200px">大家好我是luck</p>',
@@ -63,11 +63,6 @@ function luck5(){
 	luck.iframe('luck-pc','http://www.loveqiao.com/luck/mobile/',700,450);
 	_hmt.push(['_trackEvent','luck-pc-iframe','click'])
 }
-document.getElementById('logo').onclick=function(){
-	luck3();
-	_hmt.push(['_trackEvent','luck-pc-头像','click'])
-}
-
 </script> 
 <script src="http://www.loveqiao.com/js/public.js"></script>
 </body>
