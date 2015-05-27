@@ -297,7 +297,19 @@
 			}
 		}
 	}
-	
+	//获取样式路径
+	function getStyle(){
+		var obj=null,len=document.scripts.length,str='';
+		for(var i=0;i<len;i++){
+			obj=document.scripts[i];
+			if(obj.src.indexOf('luck.js')>=0){
+				str=obj.src
+				break
+			}
+		}
+		return str.split('luck.js')[0]+'skin/default/luck.css';
+	}
+
 	//入口
-	use(skin.url+skin.name+'/luck.css');
+	use(skin.url?(skin.url+skin.name+'/luck.css'):getStyle());
 }(window);
