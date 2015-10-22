@@ -9,23 +9,27 @@
 
 <body>
 <div style="text-align:center; padding:100px 0;">
-  <input type="button" value="luck-base" onClick="luck1()" class="button button-3d button-primary button-rounded">
-  <input type="button" value="alert" onClick="luck2()" class="button button-3d button-action button-rounded">
-  <input type="button" value="confirm" onClick="luck3()" class="button button-3d button-highlight button-rounded">
-  <input type="button" value="prompt" onClick="luck4()" class="button button-3d button-caution button-rounded">
-  <input type="button" value="iframe" onClick="luck5()" class="button button-3d button-royal button-rounded">
+	<input type="button" value="luck-base" onClick="luck1()" class="button button-3d button-primary button-rounded">
+	<input type="button" value="alert" onClick="luck2()" class="button button-3d button-action button-rounded">
+	<input type="button" value="confirm" onClick="luck3()" class="button button-3d button-highlight button-rounded">
+	<input type="button" value="prompt" onClick="luck4()" class="button button-3d button-caution button-rounded">
+	<input type="button" value="iframe" onClick="luck5()" class="button button-3d button-royal button-rounded">
 </div>
 <script src="http://cdn.loveqiao.com/jquery.js"></script> 
 <script src="luck/luck.js"></script> 
 <script>
-function luck1(){
+
+function luck1(n){
 	luck.open({
 		title:'luck-pc',
 		content:'<p align="center" style="line-height:200px">大家好我是luck</p>',
 		width:'500px',
 		height:'300px',
 		resize:function(obj,stu){//窗口缩放
-			luck.alert('回调值',stu);
+			luck.alert({
+				width:'200px',
+				con:stu
+			})
 		},
 //		btn:['好','非常好'],
 //		time:2000,
@@ -39,30 +43,50 @@ function luck1(){
 //		no:function(){
 //			luck.alert('系统提示','您点击了no...',6);
 //		},
+
 	});
 	_hmt.push(['_trackEvent','luck-pc-基础框','click'])
 }
-function luck2(){
-	luck.alert('luck-pc','大家好我是活泼可爱的Luck弹层组件!',6);
-	_hmt.push(['_trackEvent','luck-pc-alert','click'])
+
+function luck2() {
+	luck.alert({
+		width:'200px',
+		con:'Luck弹层组件!',
+		ico:6,
+		callback:function(){
+			luck.alert({
+				width:'200px',
+				con:'执行回调'
+			})
+		}
+	})
+    _hmt.push([ "_trackEvent", "luck-pc-alert", "click" ]);
 }
-function luck3(){
-	luck.confirm('luck-pc','你们说我可爱不可爱呀？',function(obj){
-		var t=obj?'可爱！':'怎么能不可爱呢？'
-		luck.alert('系统提示',t);
-	},['可爱','不可爱']);
-	_hmt.push(['_trackEvent','luck-pc-confirm','click'])
+function luck3() {
+	luck.confirm({
+		con:'你们说我可爱不可爱呀?',
+		btn:['可爱','不可爱'],
+		callback:function(obj){
+			var t = obj ? "汪汪汪！" :"嗯~~汪汪~~";
+			luck.alert({
+				width:'200px',
+				con:t
+			})
+		}	
+	})
+    _hmt.push([ "_trackEvent", "luck-pc-confirm", "click" ]);
 }
-function luck4(){
-	luck.prompt('luck-pc','Luck弹层组件pc版',function(txt){
-		luck.alert('您输入的是',txt);
-	});
-	_hmt.push(['_trackEvent','luck-pc-prompt','click'])
+function luck4() {
+    luck.prompt("luck-pc", "Luck弹层组件pc版", function(txt) {
+        luck.alert("您输入的是", txt);
+    });
+    _hmt.push([ "_trackEvent", "luck-pc-prompt", "click" ]);
 }
-function luck5(){
-	luck.iframe('luck-pc','http://www.loveqiao.com/luck/mobile/',700,450);
-	_hmt.push(['_trackEvent','luck-pc-iframe','click'])
+function luck5() {
+    luck.iframe("luck-pc", "http://www.loveqiao.com/luck/mobile/", 700, 450);
+    _hmt.push([ "_trackEvent", "luck-pc-iframe", "click" ]);
 }
+
 </script> 
 <script src="http://www.loveqiao.com/js/public.js"></script>
 </body>
