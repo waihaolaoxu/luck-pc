@@ -11,7 +11,6 @@
     "use strict";
     var skin = {
         url:"skin/",
-        //皮肤路径
         name:"default/"
     }, c = document, count = 0, delay = null;
     //定义主类
