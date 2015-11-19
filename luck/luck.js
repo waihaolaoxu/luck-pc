@@ -1,18 +1,18 @@
 /*
- @ Aame：luck弹层组件-pc版
+ @ Name：luck弹层组件-PC版
  @ Author：前端老徐
  @ Date：2015/5/20
  @ E-mail：442413729@qq.com
  @ Weibo:http://weibo.com/qdlaoxu
- @ Github:https://github.com/waihaolaoxu
+ @ GitHub:https://github.com/waihaolaoxu
  @ Address:http://www.loveqiao.com/
 */
 !function(a) {
     "use strict";
     var skin = {
-        url:"luck/skin/",
+        url:"skin/",
         //皮肤路径
-        name:"default"
+        name:"default/"
     }, c = document, count = 0, delay = null;
     //定义主类
     function Class(opt) {
@@ -43,8 +43,8 @@
         if (opt.height) {
             luck_box.style.height = opt.height;
         }
-        if (opt.class) {
-            $(luck_box).addClass(opt.class);
+        if (opt.addclass) {
+            $(luck_box).addClass(opt.addclass);
         }
         //标题
         if (opt.title) {
@@ -261,41 +261,8 @@
             } catch (e) {}
         }
     };
-    //模块加载器	
-    function use(module, callback, charset) {
-        var i = 0, head = document.getElementsByTagName("head")[0];
-        var module = module.replace(/\s/g, "");
-        var iscss = /\.css$/.test(module);
-        var node = document.createElement(iscss ? "link" :"script");
-        var id = module.replace(/\.|\//g, "");
-        if (iscss) {
-            node.type = "text/css";
-            node.rel = "stylesheet";
-        }
-        if (charset) {
-            node.setAttribute("charset", charset);
-        }
-        node[iscss ? "href" :"src"] = /^http:\/\//.test(module) ? module :module;
-        node.id = id;
-        if (!document.getElementById(id)) {
-            head.appendChild(node);
-        }
-        if (callback) {
-            if (node.readyState) {
-                node.onreadystatechange = function() {
-                    if (node.readyState == "loaded" || node.readyState == "complete") {
-                        node.onreadystatechange = null;
-                        callback();
-                    }
-                };
-            } else {
-                node.onload = function() {
-                    callback();
-                };
-            }
-        }
-    }
-    //获取样式路径
+	//追加样式
+    var style = "";
     function getStyle() {
         var obj = null, len = document.scripts.length, str = "";
         for (var i = 0; i < len; i++) {
@@ -305,8 +272,11 @@
                 break;
             }
         }
-        return str.split("luck.js")[0] + "skin/default/luck.css";
+        return str.split("luck.js")[0] +skin.url+skin.name+'luck.css';
     }
-    //入口
-    use(skin.url ? skin.url + skin.name + "/luck.css" :getStyle());
+    document.head.appendChild(function() {
+        var a = c.createElement("link");
+        a.href = style ? style :getStyle(), a.type = "text/css", a.rel = "styleSheet", a.id = "luckcss";
+        return a;
+    }());
 }(window);
