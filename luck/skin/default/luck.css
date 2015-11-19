@@ -4,13 +4,14 @@
  @ Date：2015/5/20
  @ E-mail：442413729@qq.com
  @ Weibo:http://weibo.com/qdlaoxu
+ @ Github:https://github.com/waihaolaoxu
  @ Address:http://www.loveqiao.com/
 */
 
 /*屏蔽滚动条*/
 .hideScroll { height: 100%; overflow: hidden; }
 /*公共图标样式*/
-.luck-ico { background: url(http://www.loveqiao.com/luck/luck/skin/default/icon.png) no-repeat; height: 14px; width: 14px; }
+.luck-ico { background: url(icon.png) no-repeat; height: 14px; width: 14px; }
 /*主框架结构*/
 .luck-layer{ position:relative; z-index:9999;}
 .luck-box { position: fixed; min-width: 240px; max-width:960px; background-color: #fff; box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3); left: 40%; top: 150px; overflow:hidden;}
